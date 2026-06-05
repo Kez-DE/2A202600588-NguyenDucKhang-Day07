@@ -12,30 +12,31 @@
 ### Cosine Similarity (Ex 1.1)
 
 **High cosine similarity nghĩa là gì?**  
-High cosine similarity nghĩa là hai vector embedding có hướng gần nhau. Trong retrieval, điều này thường cho thấy hai đoạn text nói về cùng chủ đề hoặc có ý nghĩa gần nhau. Điểm gần 1 hơn thì mức tương đồng ngữ nghĩa cao hơn.
+High cosine similarity nghĩa là hai vector embedding có hướng gần nhau trong không gian nhúng. Với text embeddings, điều này thường cho thấy hai câu cùng chủ đề hoặc gần nhau về nghĩa, dù cách diễn đạt khác nhau.
 
 **Ví dụ HIGH similarity:**
 
-- Sentence A: A vector store retrieves similar embeddings.
-- Sentence B: A database can search vectors by similarity.
-- Lý do: Cả hai câu đều nói về việc tìm kiếm dữ liệu bằng vector similarity.
+- Sentence A: "List comprehension trong Python tạo list mới từ một iterable."
+- Sentence B: "Có thể dùng cú pháp comprehension thay cho vòng lặp for để tạo list."
+- Lý do: Hai câu đều nói về cách tạo list bằng list comprehension trong Python.
 
 **Ví dụ LOW similarity:**
 
-- Sentence A: Metadata filters can narrow search results.
-- Sentence B: Brown bears live in northern forests.
-- Lý do: Một câu nói về retrieval system, câu còn lại nói về động vật.
+- Sentence A: "Class trong Python định nghĩa khuôn mẫu để tạo object."
+- Sentence B: "Lệnh pip install tải package từ PyPI về máy."
+- Lý do: Một câu nói về OOP, câu còn lại nói về package management. Hai chủ đề này không gần nhau trong bộ tài liệu.
 
 **Tại sao cosine similarity phù hợp hơn Euclidean distance cho text embeddings?**  
-Cosine similarity tập trung vào hướng của vector thay vì độ dài tuyệt đối. Với text embeddings, hai câu gần nghĩa có thể có vector magnitude khác nhau, nhưng hướng vector vẫn gần nhau. Vì vậy cosine similarity phù hợp khi mục tiêu là so sánh ý nghĩa.
+Cosine similarity đo góc giữa hai vector, nên tập trung vào hướng biểu diễn nghĩa. Euclidean distance bị ảnh hưởng nhiều hơn bởi độ dài vector; với text, hai câu cùng nghĩa nhưng độ dài khác nhau vẫn nên được xem là gần nhau.
 
 ### Chunking Math (Ex 1.2)
 
 Document dài 10,000 ký tự, `chunk_size=500`, `overlap=50`.
 
 ```text
-num_chunks = ceil((doc_length - overlap) / (chunk_size - overlap))
-           = ceil((10000 - 50) / (500 - 50))
+step = chunk_size - overlap = 500 - 50 = 450
+num_chunks = ceil((doc_length - overlap) / step)
+           = ceil((10000 - 50) / 450)
            = ceil(9950 / 450)
            = 23 chunks
 ```
@@ -43,12 +44,13 @@ num_chunks = ceil((doc_length - overlap) / (chunk_size - overlap))
 Nếu `overlap=100`:
 
 ```text
-num_chunks = ceil((10000 - 100) / (500 - 100))
+step = 500 - 100 = 400
+num_chunks = ceil((10000 - 100) / 400)
            = ceil(9900 / 400)
            = 25 chunks
 ```
 
-Overlap tăng làm số chunk tăng. Đổi lại, mỗi chunk giữ thêm context từ chunk trước, giảm nguy cơ cắt mất ý ở ranh giới.
+Overlap tăng từ 50 lên 100 làm số chunk tăng từ 23 lên 25. Đổi lại, mỗi chunk giữ thêm context từ chunk trước, giảm rủi ro cắt mất ý ở ranh giới.
 
 ---
 
@@ -203,17 +205,15 @@ Chat log: logs/python_docs_benchmark.jsonl
 
 Embedding backend dùng để đo actual score: `OllamaEmbedder(qwen3-embedding:0.6b)`.
 
+| Pair | Sentence A                                                     | Sentence B                                                               | Dự đoán | Actual Score | Đúng? |
+| ---- | -------------------------------------------------------------- | ------------------------------------------------------------------------ | ------- | ------------ | ----- |
+| 1    | List comprehension trong Python tạo list mới từ một iterable.  | Có thể dùng cú pháp comprehension thay cho vòng lặp for để tạo list.     | high    | 0.7331       | Đúng  |
+| 2    | Khối try-except bắt lỗi xảy ra trong lúc chương trình chạy.    | Exception handling giúp Python xử lý lỗi runtime an toàn hơn.            | high    | 0.6353       | Đúng  |
+| 3    | Virtual environment tách dependency cho từng project Python.   | pip cài đặt và quản lý package trong môi trường Python.                  | high    | 0.6211       | Đúng  |
+| 4    | Class trong Python định nghĩa khuôn mẫu để tạo object.         | Lệnh pip install tải package từ PyPI về máy.                             | low     | 0.3374       | Đúng  |
+| 5    | Module Python giúp tổ chức code thành nhiều file riêng.        | Môi trường ảo giúp tránh xung đột phiên bản dependency.                  | low     | 0.3540       | Đúng  |
 
-| Pair | Sentence A                                     | Sentence B                                                        | Dự đoán | Actual Score | Đúng? |
-| ---- | ---------------------------------------------- | ----------------------------------------------------------------- | ------- | ------------ | ----- |
-| 1    | Python is used to build RAG systems.           | Python connects embeddings, vector stores, and application logic. | high    | 0.620        | Đúng  |
-| 2    | A vector store retrieves similar embeddings.   | A database can search vectors by similarity.                      | high    | 0.787        | Đúng  |
-| 3    | Customer support uses knowledge base articles. | The support team answers repeated customer questions.             | high    | 0.685        | Đúng  |
-| 4    | Deep learning uses neural networks.            | Cooking recipes list ingredients and steps.                       | low     | 0.338        | Đúng  |
-| 5    | Metadata filters can narrow search results.    | Brown bears live in northern forests.                             | low     | 0.142        | Đúng  |
-
-
-Pair 4 có score `0.338`, cao hơn tôi kỳ vọng vì hai câu khác domain. Điều này nhắc tôi không nên đọc similarity score như bằng chứng tuyệt đối. Với RAG, cần xem cả top-k chunk, source document và answer cuối cùng.
+Pair 4 và Pair 5 có score khoảng `0.33–0.35`, cao hơn mức “khác hoàn toàn” mà tôi kỳ vọng. Lý do có thể là các câu vẫn cùng nằm trong domain Python. Vì vậy similarity score chỉ nên là tín hiệu ban đầu; khi làm RAG vẫn cần kiểm tra top-k chunk và source document.
 
 ---
 
