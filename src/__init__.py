@@ -9,9 +9,13 @@ from .chunking import (
 from .embeddings import (
     EMBEDDING_PROVIDER_ENV,
     LOCAL_EMBEDDING_MODEL,
+    OLLAMA_BASE_URL,
+    OLLAMA_CHAT_MODEL,
+    OLLAMA_EMBEDDING_MODEL,
     OPENAI_EMBEDDING_MODEL,
     LocalEmbedder,
     MockEmbedder,
+    OllamaEmbedder,
     OpenAIEmbedder,
     _mock_embed,
 )
@@ -29,9 +33,13 @@ __all__ = [
     "KnowledgeBaseAgent",
     "MockEmbedder",
     "LocalEmbedder",
+    "OllamaEmbedder",
     "OpenAIEmbedder",
     "_mock_embed",
     "LOCAL_EMBEDDING_MODEL",
     "OPENAI_EMBEDDING_MODEL",
+    "OLLAMA_EMBEDDING_MODEL",
+    "OLLAMA_CHAT_MODEL",
+    "OLLAMA_BASE_URL",
     "EMBEDDING_PROVIDER_ENV",
 ]

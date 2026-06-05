@@ -1,5 +1,10 @@
 pytest>=7.0
 python-dotenv>=1.0
+fastapi>=0.115
+uvicorn[standard]>=0.34
+requests>=2.33
+beautifulsoup4>=4.14
+markdownify>=1.2
 
 # Optional manual-demo extras
 # Install local embedder support with:

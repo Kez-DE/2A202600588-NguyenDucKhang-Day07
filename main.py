@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 import sys
 from pathlib import Path
@@ -10,8 +11,11 @@ from src.agent import KnowledgeBaseAgent
 from src.embeddings import (
     EMBEDDING_PROVIDER_ENV,
     LOCAL_EMBEDDING_MODEL,
+    OLLAMA_BASE_URL,
+    OLLAMA_EMBEDDING_MODEL,
     OPENAI_EMBEDDING_MODEL,
     LocalEmbedder,
+    OllamaEmbedder,
     OpenAIEmbedder,
     _mock_embed,
 )
@@ -19,13 +23,33 @@ from src.models import Document
 from src.store import EmbeddingStore
 
 SAMPLE_FILES = [
-    "data/python_intro.txt",
-    "data/vector_store_notes.md",
-    "data/rag_system_design.md",
-    "data/customer_support_playbook.txt",
-    "data/chunking_experiment_report.md",
-    "data/vi_retrieval_notes.md",
+    "data/python_official_docs/python_data_structures.md",
+    "data/python_official_docs/python_modules.md",
+    "data/python_official_docs/python_errors_exceptions.md",
+    "data/python_official_docs/python_classes.md",
+    "data/python_official_docs/python_stdlib.md",
+    "data/python_official_docs/python_venv.md",
+    "data/python_official_docs/python_input_output.md",
+    "data/python_official_docs/python_argparse.md",
 ]
+
+
+def _split_json_frontmatter(content: str) -> tuple[str, dict]:
+    """Return Markdown body and JSON metadata frontmatter when present."""
+    if not content.startswith("---\n"):
+        return content, {}
+
+    try:
+        _, raw_metadata, body = content.split("---\n", 2)
+    except ValueError:
+        return content, {}
+
+    try:
+        metadata = json.loads(raw_metadata)
+    except json.JSONDecodeError:
+        return content, {}
+
+    return body.lstrip(), metadata
 
 
 def load_documents_from_files(file_paths: list[str]) -> list[Document]:
@@ -45,11 +69,14 @@ def load_documents_from_files(file_paths: list[str]) -> list[Document]:
             continue
 
         content = path.read_text(encoding="utf-8")
+        body, frontmatter = _split_json_frontmatter(content)
+        metadata = {"source": str(path), "extension": path.suffix.lower()}
+        metadata.update(frontmatter)
         documents.append(
             Document(
-                id=path.stem,
-                content=content,
-                metadata={"source": str(path), "extension": path.suffix.lower()},
+                id=metadata.get("doc_id", path.stem),
+                content=body,
+                metadata=metadata,
             )
         )
 
@@ -88,6 +115,15 @@ def run_manual_demo(question: str | None = None, sample_files: list[str] | None 
     if provider == "local":
         try:
             embedder = LocalEmbedder(model_name=os.getenv("LOCAL_EMBEDDING_MODEL", LOCAL_EMBEDDING_MODEL))
+        except Exception:
+            embedder = _mock_embed
+    elif provider == "ollama":
+        try:
+            embedder = OllamaEmbedder(
+                model_name=os.getenv("OLLAMA_EMBEDDING_MODEL", OLLAMA_EMBEDDING_MODEL),
+                base_url=os.getenv("OLLAMA_BASE_URL", OLLAMA_BASE_URL),
+            )
+            embedder("embedding smoke test")
         except Exception:
             embedder = _mock_embed
     elif provider == "openai":

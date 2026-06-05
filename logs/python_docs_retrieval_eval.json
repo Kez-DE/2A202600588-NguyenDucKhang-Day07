@@ -1,0 +1,801 @@
+{
+  "generated_at": "2026-06-05T05:40:19.522988+00:00",
+  "embedding_backend": "ollama:qwen3-embedding:0.6b",
+  "source_documents": [
+    {
+      "doc_id": "python_data_structures",
+      "title": "Data Structures",
+      "topic": "data_structures",
+      "difficulty": "beginner",
+      "source_url": "https://docs.python.org/3/tutorial/datastructures.html",
+      "chars": 25291
+    },
+    {
+      "doc_id": "python_modules",
+      "title": "Modules",
+      "topic": "modules",
+      "difficulty": "beginner",
+      "source_url": "https://docs.python.org/3/tutorial/modules.html",
+      "chars": 25645
+    },
+    {
+      "doc_id": "python_errors_exceptions",
+      "title": "Errors and Exceptions",
+      "topic": "errors",
+      "difficulty": "intermediate",
+      "source_url": "https://docs.python.org/3/tutorial/errors.html",
+      "chars": 25045
+    },
+    {
+      "doc_id": "python_classes",
+      "title": "Classes",
+      "topic": "oop",
+      "difficulty": "intermediate",
+      "source_url": "https://docs.python.org/3/tutorial/classes.html",
+      "chars": 37363
+    },
+    {
+      "doc_id": "python_stdlib",
+      "title": "Brief Tour of the Standard Library",
+      "topic": "standard_library",
+      "difficulty": "intermediate",
+      "source_url": "https://docs.python.org/3/tutorial/stdlib.html",
+      "chars": 14452
+    },
+    {
+      "doc_id": "python_venv",
+      "title": "Virtual Environments and Packages",
+      "topic": "environment",
+      "difficulty": "beginner",
+      "source_url": "https://docs.python.org/3/tutorial/venv.html",
+      "chars": 7271
+    },
+    {
+      "doc_id": "python_input_output",
+      "title": "Input and Output",
+      "topic": "io",
+      "difficulty": "beginner",
+      "source_url": "https://docs.python.org/3/tutorial/inputoutput.html",
+      "chars": 21745
+    },
+    {
+      "doc_id": "python_argparse",
+      "title": "argparse — Parser for command-line options, arguments and subcommands",
+      "topic": "cli",
+      "difficulty": "intermediate",
+      "source_url": "https://docs.python.org/3/library/argparse.html",
+      "chars": 94752
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": 1,
+      "query": "Python list comprehension khác gì so với for loop khi tạo list mới?",
+      "gold_topic": "data_structures",
+      "gold_doc_id": "python_data_structures",
+      "gold_answer": "List comprehension tạo list mới bằng cú pháp ngắn gọn gồm expression và for clause; for loop làm cùng việc nhưng dài hơn và cần append thủ công."
+    },
+    {
+      "id": 2,
+      "query": "Python module import hoạt động như thế nào, và Module Search Path ảnh hưởng gì?",
+      "gold_topic": "modules",
+      "gold_doc_id": "python_modules",
+      "gold_answer": "import nạp definitions từ module; Module Search Path quyết định Python tìm module ở thư mục script, PYTHONPATH và các thư mục cài đặt chuẩn theo thứ tự nào."
+    },
+    {
+      "id": 3,
+      "query": "try-except-finally / exception handling trong Python xử lý lỗi ra sao?",
+      "gold_topic": "errors",
+      "gold_doc_id": "python_errors_exceptions",
+      "gold_answer": "try chạy code có thể lỗi, except bắt exception phù hợp, finally chạy cleanup dù có lỗi hay không; raise dùng để phát sinh hoặc phát lại exception."
+    },
+    {
+      "id": 4,
+      "query": "Class, instance, attribute, method trong Python OOP khác nhau thế nào?",
+      "gold_topic": "oop",
+      "gold_doc_id": "python_classes",
+      "gold_answer": "Class định nghĩa kiểu đối tượng; instance là object tạo từ class; attribute là dữ liệu gắn với object/class; method là function thuộc class và thường thao tác trên instance."
+    },
+    {
+      "id": 5,
+      "query": "Virtual environment và pip giúp quản lý dependency conflict như thế nào?",
+      "gold_topic": "environment",
+      "gold_doc_id": "python_venv",
+      "gold_answer": "Virtual environment tách package theo từng project; pip cài, nâng cấp và quản lý package trong môi trường đó, giúp hai project dùng version dependency khác nhau."
+    }
+  ],
+  "results": [
+    {
+      "strategy": "FixedSizeChunker(chunk_size=700, overlap=50)",
+      "chunk_summary": {
+        "chunk_count": 391,
+        "avg_length": 692.4,
+        "min_length": 121,
+        "max_length": 700
+      },
+      "top1_relevant": 5,
+      "top3_relevant": 5,
+      "queries": [
+        {
+          "id": 1,
+          "query": "Python list comprehension khác gì so với for loop khi tạo list mới?",
+          "gold_topic": "data_structures",
+          "gold_doc_id": "python_data_structures",
+          "gold_answer": "List comprehension tạo list mới bằng cú pháp ngắn gọn gồm expression và for clause; for loop làm cùng việc nhưng dài hơn và cần append thủ công.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 9,
+              "score": 0.6811,
+              "preview": "der of arrival deque(['Michael', 'Terry', 'Graham']) ```  ### 5.1.3. List Comprehensions  List comprehensions provide a concise way to create lists. Common applications are to make"
+            },
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 10,
+              "score": 0.6702,
+              "preview": "ts after the loop completes. We can calculate the list of squares without any side effects using:  ``` squares = list(map(lambda x: x**2, range(10))) ```  or, equivalently:  ``` sq"
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 57,
+              "score": 0.6132,
+              "preview": "end to be more memory friendly than equivalent list comprehensions.  Examples:  ``` >>> sum(i*i for i in range(10))                 # sum of squares 285  >>> xvec = [10, 20, 30] >>"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "query": "Python module import hoạt động như thế nào, và Module Search Path ảnh hưởng gì?",
+          "gold_topic": "modules",
+          "gold_doc_id": "python_modules",
+          "gold_answer": "import nạp definitions từ module; Module Search Path quyết định Python tìm module ở thư mục script, PYTHONPATH và các thư mục cài đặt chuẩn theo thứ tự nào.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 30,
+              "score": 0.6134,
+              "preview": "tentionally hiding valid modules that occur later on the module search path. In the simplest case, `__init__.py` can just be an empty file, but it can also execute initialization c"
+            },
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 10,
+              "score": 0.6117,
+              "preview": "1])) ```  you can make the file usable as a script as well as an importable module, because the code that parses the command line only runs if the module is executed as the “main” "
+            },
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 39,
+              "score": 0.5845,
+              "preview": ". Since the main module does not have a package, modules intended for use as the main module of a Python application must always use absolute imports.  ### 6.4.3. Packages in Multi"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "query": "try-except-finally / exception handling trong Python xử lý lỗi ra sao?",
+          "gold_topic": "errors",
+          "gold_doc_id": "python_errors_exceptions",
+          "gold_answer": "try chạy code có thể lỗi, except bắt exception phù hợp, finally chạy cleanup dù có lỗi hay không; raise dùng để phát sinh hoặc phát lại exception.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 24,
+              "score": 0.7113,
+              "preview": "x cases when an exception occurs:  - If an exception occurs during execution of the `try`   clause, the exception may be handled by an [`except`](../reference/compound_stmts.html#e"
+            },
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 23,
+              "score": 0.6585,
+              "preview": "efine clean-up actions that must be executed under all circumstances. For example:  ``` >>> try: ...     raise KeyboardInterrupt ... finally: ...     print('Goodbye, world!') ... G"
+            },
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 13,
+              "score": 0.6397,
+              "preview": ".html#KeyboardInterrupt \"KeyboardInterrupt\") which is raised when a user wishes to interrupt the program.  [`Exception`](../library/exceptions.html#Exception \"Exception\") can be us"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "query": "Class, instance, attribute, method trong Python OOP khác nhau thế nào?",
+          "gold_topic": "oop",
+          "gold_doc_id": "python_classes",
+          "gold_answer": "Class định nghĩa kiểu đối tượng; instance là object tạo từ class; attribute là dữ liệu gắn với object/class; method là function thuộc class và thường thao tác trên instance.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 24,
+              "score": 0.6628,
+              "preview": "Data attributes need not be declared; like local variables, they spring into existence when they are first assigned to. For example, if `x` is the instance of `MyClass` created abo"
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 23,
+              "score": 0.6561,
+              "preview": " for greater flexibility. In that case, arguments given to the class instantiation operator are passed on to `__init__()`. For example,  ``` >>> class Complex: ...     def __init__"
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 1,
+              "score": 0.6369,
+              "preview": "# 9. Classes  Classes provide a means of bundling data and functionality together. Creating a new class creates a new *type* of object, allowing new *instances* of that type to be "
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "query": "Virtual environment và pip giúp quản lý dependency conflict như thế nào?",
+          "gold_topic": "environment",
+          "gold_doc_id": "python_venv",
+          "gold_answer": "Virtual environment tách package theo từng project; pip cài, nâng cấp và quản lý package trong môi trường đó, giúp hai project dùng version dependency khác nhau.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 2,
+              "score": 0.6977,
+              "preview": "ing either version 1.0 or 2.0 will leave one application unable to run.  The solution for this problem is to create a [virtual environment](../glossary.html#term-virtual-environmen"
+            },
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 1,
+              "score": 0.5908,
+              "preview": "# 12. Virtual Environments and Packages  ## 12.1. Introduction  Python applications will often use packages and modules that don’t come as part of the standard library. Application"
+            },
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 9,
+              "score": 0.5792,
+              "preview": "ython -m pip uninstall` followed by one or more package names will remove the packages from the virtual environment.  `python -m pip show` will display information about a particul"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "strategy": "SentenceChunker(max_sentences_per_chunk=3)",
+      "chunk_summary": {
+        "chunk_count": 478,
+        "avg_length": 521.4,
+        "min_length": 24,
+        "max_length": 2741
+      },
+      "top1_relevant": 5,
+      "top3_relevant": 5,
+      "queries": [
+        {
+          "id": 1,
+          "query": "Python list comprehension khác gì so với for loop khi tạo list mới?",
+          "gold_topic": "data_structures",
+          "gold_doc_id": "python_data_structures",
+          "gold_answer": "List comprehension tạo list mới bằng cú pháp ngắn gọn gồm expression và for clause; for loop làm cùng việc nhưng dài hơn và cần append thủ công.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 17,
+              "score": 0.6309,
+              "preview": "The result will be a new list resulting from evaluating the expression in the context of the `for` and `if` clauses which follow it. For example, this listcomp combines the element"
+            },
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 16,
+              "score": 0.6279,
+              "preview": ">>> squares [0, 1, 4, 9, 16, 25, 36, 49, 64, 81] ```  Note that this creates (or overwrites) a variable named `x` that still exists after the loop completes. We can calculate the l"
+            },
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 19,
+              "score": 0.612,
+              "preview": "If the expression is a tuple (e.g. the `(x, y)` in the previous example), it must be parenthesized. ``` >>> vec = [-4, -2, 0, 2, 4] >>> # create a new list with the values doubled "
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "query": "Python module import hoạt động như thế nào, và Module Search Path ảnh hưởng gì?",
+          "gold_topic": "modules",
+          "gold_doc_id": "python_modules",
+          "gold_answer": "import nạp definitions từ module; Module Search Path quyết định Python tìm module ở thư mục script, PYTHONPATH và các thư mục cài đặt chuẩn theo thứ tự nào.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 13,
+              "score": 0.633,
+              "preview": "### 6.1.2. The Module Search Path  When a module named `spam` is imported, the interpreter first searches for a built-in module with that name. These module names are listed in [`s"
+            },
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 16,
+              "score": 0.5924,
+              "preview": "In other words the directory containing the symlink is **not** added to the module search path. After initialization, Python programs can modify [`sys.path`](../library/sys.html#sy"
+            },
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 45,
+              "score": 0.5519,
+              "preview": "Since the main module does not have a package, modules intended for use as the main module of a Python application must always use absolute imports. ### 6.4.3. Packages in Multiple"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "query": "try-except-finally / exception handling trong Python xử lý lỗi ra sao?",
+          "gold_topic": "errors",
+          "gold_doc_id": "python_errors_exceptions",
+          "gold_answer": "try chạy code có thể lỗi, except bắt exception phù hợp, finally chạy cleanup dù có lỗi hay không; raise dùng để phát sinh hoặc phát lại exception.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 41,
+              "score": 0.7155,
+              "preview": "If the exception is not handled by an `except`   clause, the exception is re-raised after the `finally`   clause has been executed. - An exception could occur during execution of a"
+            },
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 40,
+              "score": 0.6834,
+              "preview": "Traceback (most recent call last):   File \"<stdin>\", line 2, in <module>     raise KeyboardInterrupt KeyboardInterrupt ```  If a [`finally`](../reference/compound_stmts.html#finall"
+            },
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 49,
+              "score": 0.6624,
+              "preview": ">>> divide(2, 1) result is 2.0 executing finally clause >>> divide(2, 0) division by zero! executing finally clause >>> divide(\"2\", \"1\") executing finally clause Traceback (most re"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "query": "Class, instance, attribute, method trong Python OOP khác nhau thế nào?",
+          "gold_topic": "oop",
+          "gold_doc_id": "python_classes",
+          "gold_answer": "Class định nghĩa kiểu đối tượng; instance là object tạo từ class; attribute là dữ liệu gắn với object/class; method là function thuộc class và thường thao tác trên instance.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 2,
+              "score": 0.6712,
+              "preview": "Each class instance can have attributes attached to it for maintaining its state. Class instances can also have methods (defined by its class) for modifying its state. Compared wit"
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 42,
+              "score": 0.6515,
+              "preview": "In general, methods work as follows. When a non-data attribute of an instance is referenced, the instance’s class is searched. If the name denotes a valid class attribute that is a"
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 35,
+              "score": 0.6398,
+              "preview": "Instance Objects  Now what can we do with instance objects? The only operations understood by instance objects are attribute references. There are two kinds of valid attribute name"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "query": "Virtual environment và pip giúp quản lý dependency conflict như thế nào?",
+          "gold_topic": "environment",
+          "gold_doc_id": "python_venv",
+          "gold_answer": "Virtual environment tách package theo từng project; pip cài, nâng cấp và quản lý package trong môi trường đó, giúp hai project dùng version dependency khác nhau.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 3,
+              "score": 0.7156,
+              "preview": "The solution for this problem is to create a [virtual environment](../glossary.html#term-virtual-environment), a self-contained directory tree that contains a Python installation f"
+            },
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 4,
+              "score": 0.6217,
+              "preview": "If application B requires a library be upgraded to version 3.0, this will not affect application A’s environment. ## 12.2. Creating Virtual Environments  The module used to create "
+            },
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 1,
+              "score": 0.5418,
+              "preview": "# 12. Virtual Environments and Packages  ## 12.1. Introduction  Python applications will often use packages and modules that don’t come as part of the standard library."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "strategy": "RecursiveChunker(chunk_size=700) -- my strategy",
+      "chunk_summary": {
+        "chunk_count": 474,
+        "avg_length": 525.0,
+        "min_length": 12,
+        "max_length": 700
+      },
+      "top1_relevant": 5,
+      "top3_relevant": 5,
+      "queries": [
+        {
+          "id": 1,
+          "query": "Python list comprehension khác gì so với for loop khi tạo list mới?",
+          "gold_topic": "data_structures",
+          "gold_doc_id": "python_data_structures",
+          "gold_answer": "List comprehension tạo list mới bằng cú pháp ngắn gọn gồm expression và for clause; for loop làm cùng việc nhưng dài hơn và cần append thủ công.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 11,
+              "score": 0.7106,
+              "preview": "List comprehensions provide a concise way to create lists. Common applications are to make new lists where each element is the result of some operations applied to each member of a"
+            },
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 12,
+              "score": 0.6455,
+              "preview": "``` squares = list(map(lambda x: x**2, range(10))) ```  or, equivalently:  ``` squares = [x**2 for x in range(10)] ```  which is more concise and readable.  A list comprehension co"
+            },
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 15,
+              "score": 0.6186,
+              "preview": ">>> [x, x**2 for x in range(6)] File \"<stdin>\", line 1 [x, x**2 for x in range(6)] ^^^^^^^ SyntaxError: did you forget parentheses around the comprehension target? >>> # flatten a "
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "query": "Python module import hoạt động như thế nào, và Module Search Path ảnh hưởng gì?",
+          "gold_topic": "modules",
+          "gold_doc_id": "python_modules",
+          "gold_answer": "import nạp definitions từ module; Module Search Path quyết định Python tìm module ở thư mục script, PYTHONPATH và các thư mục cài đặt chuẩn theo thứ tự nào.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 12,
+              "score": 0.649,
+              "preview": "This is often used either to provide a convenient user interface to a module, or for testing purposes (running the module as a script executes a test suite).  ### 6.1.2. The Module"
+            },
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 48,
+              "score": 0.5691,
+              "preview": "Packages support one more special attribute, [`__path__`](../reference/datamodel.html#module.__path__ \"module.__path__\"). This is initialized to be a [sequence](../glossary.html#te"
+            },
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 15,
+              "score": 0.5555,
+              "preview": "After initialization, Python programs can modify [`sys.path`](../library/sys.html#sys.path \"sys.path\"). The directory containing the script being run is placed at the beginning of "
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "query": "try-except-finally / exception handling trong Python xử lý lỗi ra sao?",
+          "gold_topic": "errors",
+          "gold_doc_id": "python_errors_exceptions",
+          "gold_answer": "try chạy code có thể lỗi, except bắt exception phù hợp, finally chạy cleanup dù có lỗi hay không; raise dùng để phát sinh hoặc phát lại exception.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 29,
+              "score": 0.7162,
+              "preview": "- If an exception occurs during execution of the `try` clause, the exception may be handled by an [`except`](../reference/compound_stmts.html#except) clause. If the exception is no"
+            },
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 28,
+              "score": 0.6587,
+              "preview": "``` >>> try: ...     raise KeyboardInterrupt ... finally: ...     print('Goodbye, world!') ... Goodbye, world! Traceback (most recent call last):   File \"<stdin>\", line 2, in <modu"
+            },
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 3,
+              "score": 0.6537,
+              "preview": "Even if a statement or expression is syntactically correct, it may cause an error when an attempt is made to execute it. Errors detected during execution are called *exceptions* an"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "query": "Class, instance, attribute, method trong Python OOP khác nhau thế nào?",
+          "gold_topic": "oop",
+          "gold_doc_id": "python_classes",
+          "gold_answer": "Class định nghĩa kiểu đối tượng; instance là object tạo từ class; attribute là dữ liệu gắn với object/class; method là function thuộc class và thường thao tác trên instance.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 35,
+              "score": 0.646,
+              "preview": "In general, methods work as follows. When a non-data attribute of an instance is referenced, the instance’s class is searched. If the name denotes a valid class attribute that is a"
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 30,
+              "score": 0.6448,
+              "preview": "Of course, the [`__init__()`](../reference/datamodel.html#object.__init__ \"object.__init__\") method may have arguments for greater flexibility. In that case, arguments given to the"
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 31,
+              "score": 0.6447,
+              "preview": "*Data attributes* correspond to “instance variables” in Smalltalk, and to “data members” in C++. Data attributes need not be declared; like local variables, they spring into existe"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "query": "Virtual environment và pip giúp quản lý dependency conflict như thế nào?",
+          "gold_topic": "environment",
+          "gold_doc_id": "python_venv",
+          "gold_answer": "Virtual environment tách package theo từng project; pip cài, nâng cấp và quản lý package trong môi trường đó, giúp hai project dùng version dependency khác nhau.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 2,
+              "score": 0.6948,
+              "preview": "This means it may not be possible for one Python installation to meet the requirements of every application. If application A needs version 1.0 of a particular module but applicati"
+            },
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 3,
+              "score": 0.6391,
+              "preview": "Different applications can then use different virtual environments. To resolve the earlier example of conflicting requirements, application A can have its own virtual environment w"
+            },
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 4,
+              "score": 0.5534,
+              "preview": "The module used to create and manage virtual environments is called [`venv`](../library/venv.html#module-venv \"venv: Creation of virtual environments.\"). `venv` will install the Py"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "strategy": "HeaderAwareChunker(chunk_size=700)",
+      "chunk_summary": {
+        "chunk_count": 519,
+        "avg_length": 479.3,
+        "min_length": 12,
+        "max_length": 700
+      },
+      "top1_relevant": 5,
+      "top3_relevant": 5,
+      "queries": [
+        {
+          "id": 1,
+          "query": "Python list comprehension khác gì so với for loop khi tạo list mới?",
+          "gold_topic": "data_structures",
+          "gold_doc_id": "python_data_structures",
+          "gold_answer": "List comprehension tạo list mới bằng cú pháp ngắn gọn gồm expression và for clause; for loop làm cùng việc nhưng dài hơn và cần append thủ công.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 11,
+              "score": 0.6793,
+              "preview": "### 5.1.3. List Comprehensions  List comprehensions provide a concise way to create lists. Common applications are to make new lists where each element is the result of some operat"
+            },
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 12,
+              "score": 0.6455,
+              "preview": "``` squares = list(map(lambda x: x**2, range(10))) ```  or, equivalently:  ``` squares = [x**2 for x in range(10)] ```  which is more concise and readable.  A list comprehension co"
+            },
+            {
+              "doc_id": "python_data_structures",
+              "topic": "data_structures",
+              "chunk_index": 15,
+              "score": 0.6186,
+              "preview": ">>> [x, x**2 for x in range(6)] File \"<stdin>\", line 1 [x, x**2 for x in range(6)] ^^^^^^^ SyntaxError: did you forget parentheses around the comprehension target? >>> # flatten a "
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "query": "Python module import hoạt động như thế nào, và Module Search Path ảnh hưởng gì?",
+          "gold_topic": "modules",
+          "gold_doc_id": "python_modules",
+          "gold_answer": "import nạp definitions từ module; Module Search Path quyết định Python tìm module ở thư mục script, PYTHONPATH và các thư mục cài đặt chuẩn theo thứ tự nào.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 14,
+              "score": 0.6384,
+              "preview": "### 6.1.2. The Module Search Path  When a module named `spam` is imported, the interpreter first searches for a built-in module with that name. These module names are listed in [`s"
+            },
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 17,
+              "score": 0.5862,
+              "preview": "After initialization, Python programs can modify [`sys.path`](../library/sys.html#sys.path \"sys.path\"). The directory containing the script being run is placed at the beginning of "
+            },
+            {
+              "doc_id": "python_modules",
+              "topic": "modules",
+              "chunk_index": 39,
+              "score": 0.5416,
+              "preview": "When importing the package, Python searches through the directories on `sys.path` looking for the package subdirectory.  The `__init__.py` files are required to make Python treat d"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "query": "try-except-finally / exception handling trong Python xử lý lỗi ra sao?",
+          "gold_topic": "errors",
+          "gold_doc_id": "python_errors_exceptions",
+          "gold_answer": "try chạy code có thể lỗi, except bắt exception phù hợp, finally chạy cleanup dù có lỗi hay không; raise dùng để phát sinh hoặc phát lại exception.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 33,
+              "score": 0.7162,
+              "preview": "- If an exception occurs during execution of the `try` clause, the exception may be handled by an [`except`](../reference/compound_stmts.html#except) clause. If the exception is no"
+            },
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 38,
+              "score": 0.6892,
+              "preview": "As you can see, the [`finally`](../reference/compound_stmts.html#finally) clause is executed in any event. The [`TypeError`](../library/exceptions.html#TypeError \"TypeError\") raise"
+            },
+            {
+              "doc_id": "python_errors_exceptions",
+              "topic": "errors",
+              "chunk_index": 4,
+              "score": 0.6649,
+              "preview": "## 8.2. Exceptions  Even if a statement or expression is syntactically correct, it may cause an error when an attempt is made to execute it. Errors detected during execution are ca"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "query": "Class, instance, attribute, method trong Python OOP khác nhau thế nào?",
+          "gold_topic": "oop",
+          "gold_doc_id": "python_classes",
+          "gold_answer": "Class định nghĩa kiểu đối tượng; instance là object tạo từ class; attribute là dữ liệu gắn với object/class; method là function thuộc class và thường thao tác trên instance.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 34,
+              "score": 0.6464,
+              "preview": "The other kind of instance attribute reference is a *method*. A method is a function that “belongs to” an object.  Valid method names of an instance object depend on its class. By "
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 67,
+              "score": 0.6451,
+              "preview": "[Instance method objects](../reference/datamodel.html#instance-methods) have attributes, too: [`m.__self__`](../reference/datamodel.html#method.__self__ \"method.__self__\") is the i"
+            },
+            {
+              "doc_id": "python_classes",
+              "topic": "oop",
+              "chunk_index": 1,
+              "score": 0.6416,
+              "preview": "# 9. Classes  Classes provide a means of bundling data and functionality together. Creating a new class creates a new *type* of object, allowing new *instances* of that type to be "
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "query": "Virtual environment và pip giúp quản lý dependency conflict như thế nào?",
+          "gold_topic": "environment",
+          "gold_doc_id": "python_venv",
+          "gold_answer": "Virtual environment tách package theo từng project; pip cài, nâng cấp và quản lý package trong môi trường đó, giúp hai project dùng version dependency khác nhau.",
+          "top1_relevant": true,
+          "top3_relevant": true,
+          "top3": [
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 3,
+              "score": 0.7113,
+              "preview": "The solution for this problem is to create a [virtual environment](../glossary.html#term-virtual-environment), a self-contained directory tree that contains a Python installation f"
+            },
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 1,
+              "score": 0.6806,
+              "preview": "# 12. Virtual Environments and Packages"
+            },
+            {
+              "doc_id": "python_venv",
+              "topic": "environment",
+              "chunk_index": 4,
+              "score": 0.5377,
+              "preview": "## 12.2. Creating Virtual Environments  The module used to create and manage virtual environments is called [`venv`](../library/venv.html#module-venv \"venv: Creation of virtual env"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
